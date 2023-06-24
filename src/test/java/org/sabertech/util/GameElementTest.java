@@ -4,11 +4,11 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class GameElementsTest {
+class GameElementTest {
 
     @Test
     public void generateRandomElement_ReturnsValue(){
-        GameElements element = GameElements.generateRandomElement();
+        GameElement element = GameElement.generateRandomElement();
         assertNotNull(element);
     }
 

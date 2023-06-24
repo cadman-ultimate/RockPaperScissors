@@ -27,5 +27,11 @@ public class Main {
          * Print results to user
          */
 
+        //Updated method
+        // 1 - Get the results
+        GameProcessor processor = new GameProcessor();
+
+        // 2 - Print the summary to the user
+
     }
 }

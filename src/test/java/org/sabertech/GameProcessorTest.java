@@ -13,7 +13,7 @@ class GameProcessorTest {
     @Test
     public void gameResultMap_ContainsAllResults(){
         GameProcessor processor = new GameProcessor();
-        EnumMap<GameResult,Integer> resultMap = processor.gameApplication();
+        EnumMap<GameResult,Integer> resultMap = processor.runGamePopulateResultsMap();
         assertAll("resultMap",
                 () -> assertTrue(resultMap.containsKey(GameResult.WIN)),
                 () -> assertTrue(resultMap.containsKey(GameResult.DRAW)),
@@ -25,17 +25,17 @@ class GameProcessorTest {
 
     @Test
     public void paperShouldDefeatRock(){
-        assertEquals(GameResult.WIN, GameProcessor.elementResult(GameElement.PAPER));
+        assertEquals(GameResult.WIN, GameProcessor.getPlayer2GameResult(GameElement.PAPER));
     }
 
     @Test
     public void scissorsShouldLoseToRock(){
-        assertEquals(GameResult.LOSE, GameProcessor.elementResult(GameElement.SCISSORS));
+        assertEquals(GameResult.LOSE, GameProcessor.getPlayer2GameResult(GameElement.SCISSORS));
     }
 
     @Test
     public void sameElements_ReturnsDraw(){
-        assertEquals(GameResult.DRAW, GameProcessor.elementResult(GameElement.ROCK));
+        assertEquals(GameResult.DRAW, GameProcessor.getPlayer2GameResult(GameElement.ROCK));
     }
 
 }

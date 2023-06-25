@@ -14,12 +14,12 @@ import java.util.EnumMap;
  * - Player 2 is a random selection<br>
  * 3 = At end of iterations present summary to user
  */
-public class Main {
+public class GameApplication {
 
     public static void main(String[] args) {
 
         GameProcessor processor = new GameProcessor();
-        EnumMap<GameResult, Integer> gameResult = processor.gameApplication();
+        final EnumMap<GameResult, Integer> gameResult = processor.runGamePopulateResultsMap();
 
         System.out.println("Game results...");
         System.out.println("Wins Player 1: " + gameResult.get(GameResult.LOSE));

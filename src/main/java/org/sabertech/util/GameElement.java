@@ -8,11 +8,11 @@ public enum GameElement {
     PAPER,
     SCISSORS;
 
-    private static final Random randomElement = new Random();
+    private static final Random RANDOM = new Random();
 
-    public static GameElement generateRandomElement()  {
+    public static GameElement generateRandomGameElement()  {
         GameElement[] elements = values();
-        return elements[randomElement.nextInt(elements.length)];
+        return elements[RANDOM.nextInt(elements.length)];
     }
 
 }

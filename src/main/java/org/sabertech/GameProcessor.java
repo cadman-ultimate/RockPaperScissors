@@ -11,18 +11,18 @@ import java.util.stream.Stream;
 
 public class GameProcessor {
 
-    public EnumMap<GameResult, Integer> gameApplication() {
+    public EnumMap<GameResult, Integer> runGamePopulateResultsMap() {
 
         Map<Integer,GameResult> individualResultMap = new HashMap<>();
 
         for(int i = 0; i<100; i++){
-            individualResultMap.put(i, elementResult(GameElement.generateRandomElement()));
+            individualResultMap.put(i, getPlayer2GameResult(GameElement.generateRandomGameElement()));
         }
 
-        return setUpResultMap(individualResultMap);
+        return createResultsMap(individualResultMap);
     }
 
-    public static GameResult elementResult(GameElement element) {
+    public static GameResult getPlayer2GameResult(GameElement element) {
 
         // Player 1 is always rock
 
@@ -37,15 +37,15 @@ public class GameProcessor {
         }
     }
 
-    private static EnumMap<GameResult, Integer> setUpResultMap(Map<Integer,GameResult> individualResultMap){
+    private static EnumMap<GameResult, Integer> createResultsMap(Map<Integer,GameResult> individualResultMap){
 
         return Stream.of(GameResult.values())
-                .collect(Collectors.toMap(c -> c, c -> getSize(individualResultMap, c),
+                .collect(Collectors.toMap(c -> c, c -> getGameElementSizeInMap(individualResultMap, c),
                         Integer::sum,
                         () -> new EnumMap<>(GameResult.class)));
     }
 
-    private static int getSize(Map<Integer, GameResult> individualResultMap, GameResult gameResult) {
+    private static int getGameElementSizeInMap(Map<Integer, GameResult> individualResultMap, GameResult gameResult) {
         return (int) individualResultMap.entrySet().stream()
                 .filter(r -> r.getValue().equals(gameResult)).count();
     }

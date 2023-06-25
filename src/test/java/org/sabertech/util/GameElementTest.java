@@ -8,8 +8,7 @@ class GameElementTest {
 
     @Test
     public void generateRandomElement_ReturnsValue(){
-        GameElement element = GameElement.generateRandomElement();
-        assertNotNull(element);
+        assertNotNull(GameElement.generateRandomElement());
     }
 
 }
